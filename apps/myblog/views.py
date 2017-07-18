@@ -13,7 +13,7 @@ class IndexView(View):
 #博客首页
 class HomeView(View):
     def get(self, request):
-        article_list = Article.objects.order_by('-create_time')
+        article_list = Article.objects.filter(is_aboutme=False).order_by('-create_time')
 
         #文章分页
         try:
