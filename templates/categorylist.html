@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load articleinfo %}
+
+{% block article_content %}
+<div id="content-outer">
+	<div id="content-inner">
+		<div class="tags">
+			<div id="archive">
+			  <ul class="tag-list">
+				  {% get_categories as category_list %}
+				  {% for category in category_list %}
+				  <li class="tag-list-item"><a class="tag-list-link" href="{% url 'blog:category' category.id %}">{{ category.name }}</a></li>
+				  {% endfor %}
+			  </ul>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock article_content %}

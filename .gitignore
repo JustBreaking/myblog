@@ -1,0 +1,4 @@
+*.pyc
+media/upload/
+apps/courses/migrations/
+

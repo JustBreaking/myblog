@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {% ifequal request.path|slice:'14' '/blog/archives' %}{{ archive }} - 可可西里没有海{% endifequal %}
+    {% ifequal request.path|slice:'14' '/blog/category' %}{{ category_name }} - 可可西里没有海{% endifequal %}
+    {% ifequal request.path|slice:'9' '/blog/tag' %}{{ tag_name }} - 可可西里没有海{% endifequal %}
+{% endblock title %}
+
+{% block article_content %}
+{% for article in article_list.object_list %}
+<div class="recent-post-item lazy"style="background-color:#26A69A"   data-original="{{ MEDIA_URL }}{{ article.image }}"  >
+  <!-- <a class="recent-post-link" href="{% url 'blog:article_detail' article.id %}"> -->
+  <div class="post-hover">
+    <!--title-->
+    <p class="post-title"><a href="{% url 'blog:article_detail' article.id %}" >{{ article.title }}</a></p>
+
+    <!--date-->
+
+      <p class="post-time">justbreaking &nbsp &nbsp 发布于:<time datetime="">
+        {{ article.create_time | date:"Y-m-d H:i:s" }}
+      </time>
+      </p>
+
+    <!--tags-->
+
+    标签:
+
+        <ul class="tag-list">
+            {% for tag in article.tags.all %}
+            <li class="tag-list-item"><a class="tag-list-link" href="{% url 'blog:tag' tag.id %}">{{ tag }}</a></li>
+            {% endfor %}
+        </ul>
+
+    <!--分类-->
+
+    分类:
+          <ul class="category-list"><li class="category-list-item">
+              <a class="category-list-link" href="{% url 'blog:category' article.category.id %}">{{ article.category.name }}</a></li>
+          </ul>
+
+
+    <!--excerpt-->
+    <div class="post-excerpt">
+      <p>
+        摘要：{{ article.abstract }}
+      </p>
+    </div>
+    <div class="post-more"><a href="{% url 'blog:article_detail' article.id %}" >全文阅读</a></div>
+  </div>
+  <!-- </a> -->
+</div>
+{% endfor %}
+{% endblock article_content %}
