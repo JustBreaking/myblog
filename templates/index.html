@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 {% load staticfiles %}
+{% load articleinfo %}
+
+{% get_bloger as admin %}
 <html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>可可西里没有海</title>
-    <meta name="description" content="th是个小屁孩的个人网站，欢迎光临">
-    <meta name="keywords" content="个人网站,blog,th是个小屁孩,前端,javascript">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
     <meta name="viewport" content="width=device-width,inital-scale=1,maximum-scale=1.0,user-scalable=no,minimal-ui">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-title" content="th是个小屁孩的小屋">
+    <meta name="apple-mobile-web-app-title" content="">
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <!-- 百度统计 -->
@@ -26,17 +29,17 @@
 <body>
 
     <div class="container">
-        <div class="cover-img" style="background: url(http://oct3pmpde.bkt.clouddn.com/wall-303.jpg) no-repeat fixed center center"></div>
+        <div class="cover-img" style="background: url(http://oct3pmpde.bkt.clouddn.com/wall-39.jpg) no-repeat fixed center center"></div>
         <div class="header">
-            <img class="avator" src="http://oct3pmpde.bkt.clouddn.com/avator.jpg">
+            <img class="avator" src="{{ MEDIA_URL }}{{ admin.avator }}">
             <nav>
                 <ul class="list">
                     <span>soowhat</span>
-                    <li><a href="{% url 'blog:home' %}" class="animsition-link website-title" target="_blank" title="博客页"> | 碌碌无畏's blog</a></li>
+                    <li><a href="{% url 'blog:home' %}" class="animsition-link website-title" target="_blank" title="博客页"> | 可可西里没有海's blog</a></li>
                     <li><a href="{% url 'blog:home' %}" class="icon-twitter" target="_blank"><i class="fa fa-home" aria-hidden="true" title="博客页"></i></a></li>
-                    <li><a href="https://github.com/th720309" class="icon-github" target="_blank"><i class="fa fa-github" aria-hidden="true" title="github"></i></a></li>
+                    <li><a href="https://github.com/JustBreaking" class="icon-github" target="_blank"><i class="fa fa-github" aria-hidden="true" title="github"></i></a></li>
                     <li><a href="javascript:void(0)" class="icon-weixin" target="_blank"><i class="fa fa-weixin" aria-hidden="true" title="微信"></i></a></li>
-                    <li><a href="http://weibo.com/th0527" class="icon-weibo" target="_blank"><i class="fa fa-weibo" aria-hidden="true" title="微博"></i></a></li>
+                    <li><a href="http://weibo.com/justbreaking" class="icon-weibo" target="_blank"><i class="fa fa-weibo" aria-hidden="true" title="微博"></i></a></li>
                     <li class="nolink">
                         <span class="welcome"> Welcome to my website!</span>
                     </li>
