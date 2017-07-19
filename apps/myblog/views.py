@@ -1,6 +1,8 @@
 #-*-coding:utf-8-*-
 from django.shortcuts import render, get_object_or_404
 from django.views.generic.base import View
+from django.db.models import Q
+
 from .models import Article, UserProfile, Tag, Category
 
 from pure_pagination import Paginator, EmptyPage, PageNotAnInteger
@@ -135,3 +137,27 @@ class ArticleDetailView(View):
             'pre_id':pre_id,
             'next_id':next_id,
         })
+
+#搜索
+def search(request):
+    q = request.GET.get('q')
+    error_msg = ''
+
+    if not q:
+        error_msg = "请输入关键词"
+        return render(request, 'article_list.html', {'error_msg': error_msg})
+
+    article_list = Article.objects.filter(Q(title__icontains=q) | Q(content__icontains=q))
+
+    #文章分页
+    try:
+        page = request.GET.get('page', 1)
+    except PageNotAnInteger:
+        page = 1
+
+    p = Paginator(article_list, 5, request=request) #每一页5条
+    articles = p.page(page)
+    return render(request, 'article_list.html', {
+        'error_msg': error_msg,
+        'article_list': articles,
+    })

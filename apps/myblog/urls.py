@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from django.conf.urls import url
-from .views import HomeView, ArchivesView, AboutView, PhotoView, MusicView, ArticleDetailView, CategoryView, TagListView, TagsView, CategoryListView
+from .views import HomeView, ArchivesView, AboutView, PhotoView, MusicView, ArticleDetailView, CategoryView, TagListView, TagsView, CategoryListView, search
 
 urlpatterns = [
     url(r'^$', HomeView.as_view(), name='home'),
@@ -17,4 +17,6 @@ urlpatterns = [
     url(r'^photo/', PhotoView.as_view(), name='photo'),
     url(r'^music/', MusicView.as_view(), name='music'),
     url(r'^article_detail/(?P<article_id>\d+)/$', ArticleDetailView.as_view(), name='article_detail'),
+
+    url(r'^search/$',search, name="search"),
 ]

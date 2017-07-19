@@ -37,7 +37,7 @@ def get_bloger():
 @register.simple_tag
 def get_categories():
     #模板中可以获取类名和分类下的文章数num_articles
-    return Category.objects.annotate(num_articles=Count('article')).filter(num_articles__gt=0)  #注意此处有两个_
+    return Category.objects.exclude(name='个人简介').annotate(num_articles=Count('article')).filter(num_articles__gt=0)  #注意此处有两个_
 
 @register.simple_tag
 def get_tags():

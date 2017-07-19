@@ -7,6 +7,13 @@
 {% endblock title %}
 
 {% block article_content %}
+
+{% ifequal article_list.object_list|length 0 %}
+    <div class="no_search">
+        查询不到结果!
+    </div>
+{% endifequal %}
+
 {% for article in article_list.object_list %}
 <div class="recent-post-item lazy"style="background-color:#26A69A"   data-original="{{ MEDIA_URL }}{{ article.image }}"  >
   <!-- <a class="recent-post-link" href="{% url 'blog:article_detail' article.id %}"> -->
