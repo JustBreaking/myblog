@@ -1,0 +1,9 @@
+Django==1.9.8
+django-crispy-forms==1.6.1
+django-pure-pagination==0.3.0
+DjangoUeditor==1.8.143
+httplib2==0.10.3
+MySQL-python==1.2.5
+olefile==0.44
+Pillow==4.2.1
+six==1.10.0
