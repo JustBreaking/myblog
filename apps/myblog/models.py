@@ -41,10 +41,10 @@ class Category(models.Model):
 
 @python_2_unicode_compatible
 class Tag(models.Model):
-    name = models.CharField('标签名',  max_length=16)
+    name = models.CharField('标签名',  max_length=32)
 
     class Meta:
-        verbose_name = u"分类"
+        verbose_name = u"标签"
         verbose_name_plural = verbose_name  #复数形式，若不设置，后台显示会多一个s
 
     def __str__(self):

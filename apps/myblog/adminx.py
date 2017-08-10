@@ -12,7 +12,7 @@ class ArticleAdmin(object):
 
     readonly_fields = ['views']
 
-    exclude = ['abstract']
+    # exclude = ['abstract']
 
     style_fields = {'content':'ueditor'}
 

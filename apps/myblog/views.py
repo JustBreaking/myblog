@@ -15,7 +15,7 @@ class IndexView(View):
 #博客首页
 class HomeView(View):
     def get(self, request):
-        article_list = Article.objects.filter(is_aboutme=False).order_by('-create_time')
+        article_list = Article.objects.exclude(is_aboutme=1).order_by('-create_time')
 
         #文章分页
         try:
@@ -34,7 +34,7 @@ class HomeView(View):
 class ArchivesView(View):
     def get(self, request, year, month):
         archive = '%s年%s月' % (year, month)
-        article_list = Article.objects.filter(create_time__year=year, create_time__month=month).order_by('-create_time')
+        article_list = Article.objects.exclude(is_aboutme=1).filter(create_time__year=year, create_time__month=month).order_by('-create_time')
 
         #文章分页
         try:
