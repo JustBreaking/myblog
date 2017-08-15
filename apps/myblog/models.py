@@ -53,7 +53,7 @@ class Tag(models.Model):
 #博客文章
 @python_2_unicode_compatible
 class Article(models.Model):
-    title = models.CharField('标题', max_length = 64)
+    title = models.CharField('标题', max_length = 128)
     image = models.ImageField(upload_to='article/%Y/%m', verbose_name=u'封面图', max_length=64, default = 'article/default.png')
     # author = models.ForeignKey(Author, verbose_name='作者', null=True, on_delete=models.SET_NULL)
     # content = models.TextField('正文')

@@ -21,12 +21,12 @@ def is_greate(value, custom): # value为前端传递的参数
 #文章归档
 @register.simple_tag
 def archives():
-    return Article.objects.exclude(is_aboutme=1).datetimes('create_time', 'month', order='DESC')
+    return Article.objects.exclude(is_aboutme = True).datetimes('create_time', 'month', order='DESC')
 
 #获取文章归档下的文章数量
 @register.filter
 def get_articlenums(date):
-    return Article.objects.exclude(is_aboutme=1).filter(create_time__year=date.year, create_time__month=date.month).count()
+    return Article.objects.exclude(is_aboutme = True).filter(create_time__year=date.year, create_time__month=date.month).count()
 
 #获取博主信息
 @register.simple_tag
